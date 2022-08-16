@@ -1,5 +1,5 @@
 {
-  "name": "@anilist-fe/web",
+  "name": "@rn-card-game/web",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -11,12 +11,11 @@
     "lint:fix": "yarn lint --fix"
   },
   "dependencies": {
-    "@anilist-fe/app": "*",
     "@react-native-async-storage/async-storage": "^1.15.7",
+    "@rn-card-game/app": "*",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "antd": "^4.21.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-native": "^0.65.1",

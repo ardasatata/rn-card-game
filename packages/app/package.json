@@ -1,5 +1,5 @@
 {
-  "name": "@anilist-fe/app",
+  "name": "@rn-card-game/app",
   "version": "0.0.0",
   "private": true,
   "main": "src",

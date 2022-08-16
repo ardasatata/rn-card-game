@@ -5,7 +5,7 @@ import {AppRegistry, View} from 'react-native';
 import "./index.css";
 
 import Navigator from "./routes";
-import {GameContextProvider} from "@anilist-fe/app/src/hooks/GameContextProvider";
+import {GameContextProvider} from "@rn-card-game/app/src/hooks/GameContextProvider";
 
 export function App(): JSX.Element {
   return (

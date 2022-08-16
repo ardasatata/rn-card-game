@@ -40,7 +40,7 @@ const GameMain:React.FC = ({}) => {
     );
 
   useEffect(()=>{
-    if(pairsCompleted === cards.length / 2){
+    if(pairsCompleted === cards.length / 2 && cards.length !== 0){
       winAlert()
     }
   },[pairsCompleted])
@@ -53,18 +53,12 @@ const GameMain:React.FC = ({}) => {
             Restart
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={winAlert}>
-          <Text style={styles.restartButton}>
-            Win
-          </Text>
-        </TouchableOpacity>
         <Spacer/>
         <VStack>
           <Text style={styles.textSteps}>
             STEPS:
             <Text style={styles.textStepsNumber}>
               {turns}
-              {pairsCompleted}
             </Text>
           </Text>
         </VStack>
