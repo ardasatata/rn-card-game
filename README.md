@@ -1,10 +1,12 @@
 # React Native & Web Monorepo
 
-React-native + web monorepo with card game example
+React-native + web monorepo with memory game example
 
 # Demo
 
-
+Mobile  | Web
+------------- | -------------
+<video src='https://user-images.githubusercontent.com/17568508/184928138-4da0be82-8caa-4dc0-ab5f-a329bb790bfe.mp4' width=480/> | <video src='https://user-images.githubusercontent.com/17568508/184926558-e2b5ccb7-a684-4e3a-9a77-9fa5c5ad0da5.mov' width=480/> 
 
 ## Available commands
 
