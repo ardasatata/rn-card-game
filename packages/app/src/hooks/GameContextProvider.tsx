@@ -1,7 +1,7 @@
 import React, {createContext} from "react";
 import {CardItemType} from "../type";
 import {useEffect, useMemo, useState} from "react";
-import {logger, randomizedCards} from "../utils";
+import {CARD_PAIRS_VALUE, randomizedCards} from "../utils";
 import {ANIMATION_DURATION} from "../screens/game/consts";
 import {GameContextType} from "./GameContextType";
 
@@ -21,7 +21,7 @@ export const GameContextProvider:React.FC = ({children}) => {
   // shuffle cards for new game
   const shuffleCards = () => {
 
-    const shuffledCards = randomizedCards()
+    const shuffledCards = randomizedCards(CARD_PAIRS_VALUE)
 
     setChoiceOne(null)
     setChoiceTwo(null)

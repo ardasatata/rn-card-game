@@ -11,17 +11,22 @@
     "typecheck": "tsc"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "*",
     "@react-native-async-storage/async-storage": "^1.15.7",
+    "@react-navigation/native": "*",
+    "@react-navigation/stack": "*",
     "@types/react": "^17.0.2",
     "@types/react-dom": "17.0.2",
     "@types/react-native": "^0.65.1",
+    "react": "*",
+    "react-dom": "^17.0.2",
+    "react-native": "*",
     "typescript": "^4.4.2"
   },
-  "peerDependencies": {
-    "@react-native-async-storage/async-storage": "*",
-    "@react-navigation/native": "*",
-    "@react-navigation/stack": "*",
-    "react": "*",
-    "react-native": "*"
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^12.1.5",
+    "@testing-library/react-native": "^11.0.0",
+    "@testing-library/user-event": "^12.1.10"
   }
 }

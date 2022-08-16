@@ -1,9 +1,18 @@
-import {randomizedCards, shuffle} from "../src/utils";
-import {CARD_PAIRS_VALUE} from "../src/screens/game/consts";
+import {randomInteger, randomizedCards, shuffle} from "../src/utils";
+import {MOCK_CARDS} from "../src/screens/game/consts";
 
-test('shuffle function return the same length', async () => {
+describe("Util Test Cases", () => {
+  test('shuffle function return the same length', async () => {
+    const cards = shuffle(MOCK_CARDS)
+    expect(shuffle(MOCK_CARDS).length).toBe(cards.length)
+  })
 
-  const cards = randomizedCards()
+  test('randomInteger should return number', async () => {
+    expect(typeof randomInteger(0, 100)).toBe("number")
+  })
 
-  expect(cards.length).toBe(CARD_PAIRS_VALUE.length * 2)
+  test('randomizedCards should return twice the length', async () => {
+    const shuffledCards = randomizedCards(MOCK_CARDS)
+    expect(shuffledCards.length).toBe(MOCK_CARDS.length * 2)
+  })
 })
