@@ -5,50 +5,15 @@ import {
   View,
 } from "react-native";
 
-import {ApolloProvider} from '@apollo/client';
-
-import {subplatform} from "./config";
 import Navigator from "./routes";
-import {createStackNavigator} from "@react-navigation/stack";
-import {client} from "./query";
-import {AppContextProvider} from "./hooks/AnimeContextProvider";
-
-
-// export function App(): JSX.Element {
-//   const platformValue = subplatform
-//     ? `${Platform.OS} (${subplatform})`
-//     : Platform.OS;
-//   return (
-//     <ApolloProvider client={client}>
-//       <SafeAreaView style={styles.root}>
-//         {/* On React Native for Web builds coming from CRA, TypeScript
-//             complains about the image type, so we cast it as a workaround  */}
-//         <Image style={styles.logo} source={LogoSrc as ImageSourcePropType} />
-//         <Text style={styles.text}>Hello from React Native!</Text>
-//         <View style={styles.platformRow}>
-//           <Text style={styles.text}>Platform: </Text>
-//           <View style={styles.platformBackground}>
-//             <Text style={styles.platformValue}>{platformValue}</Text>
-//           </View>
-//         </View>
-//         <AsyncStorageExample/>
-//       </SafeAreaView>
-//     </ApolloProvider>
-//   );
-// }
-
+import {GameContextProvider} from "./hooks/GameContextProvider";
 
 export function App(): JSX.Element {
-  const platformValue = subplatform
-    ? `${Platform.OS} (${subplatform})`
-    : Platform.OS;
   return (
     <View style={styles.root}>
-      <ApolloProvider client={client}>
-        <AppContextProvider>
-          <Navigator/>
-        </AppContextProvider>
-      </ApolloProvider>
+      <GameContextProvider>
+        <Navigator/>
+      </GameContextProvider>
     </View>
   );
 }
