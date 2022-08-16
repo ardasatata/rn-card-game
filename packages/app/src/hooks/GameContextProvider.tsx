@@ -32,7 +32,6 @@ export const GameContextProvider:React.FC = ({children}) => {
 
   // handle a choice
   const handleChoice = (card: CardItemType) => {
-    console.log(card)
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
   }
 

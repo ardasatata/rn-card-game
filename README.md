@@ -2,6 +2,13 @@
 
 React-native + web monorepo with memory game example
 
+# Installation
+
+1. clone this repository
+2. ```yarn install```
+3. web: ```yarn web:start```
+4. iOS: ```yarn ios:pods``` & ```yarn ios:start```
+
 # Demo
 
 Mobile  | Web
