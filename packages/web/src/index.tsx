@@ -6,11 +6,9 @@ import "./index.css";
 // import { App } from "@anilist-fe/app";
 import reportWebVitals from "./reportWebVitals";
 import {subplatform} from "@anilist-fe/app/src/config";
-import {ApolloProvider} from "@apollo/client";
 
-import {client} from "@anilist-fe/app/src/query";
 import Navigator from "./routes";
-import {AppContextProvider} from "@anilist-fe/app/src/hooks/AnimeContextProvider";
+import {GameContextProvider} from "@anilist-fe/app/src/hooks/GameContextProvider";
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -25,16 +23,11 @@ import {AppContextProvider} from "@anilist-fe/app/src/hooks/AnimeContextProvider
 // reportWebVitals();
 
 export function App(): JSX.Element {
-  const platformValue = subplatform
-    ? `${Platform.OS} (${subplatform})`
-    : Platform.OS;
   return (
-    <View style={{backgroundColor: 'red', height: '100vh'}}>
-      <ApolloProvider client={client}>
-        <AppContextProvider>
-          <Navigator/>
-        </AppContextProvider>
-      </ApolloProvider>
+    <View style={{height: '100vh'}}>
+      <GameContextProvider>
+        <Navigator/>
+      </GameContextProvider>
     </View>
   );
 }

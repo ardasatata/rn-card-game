@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useContext} from 'react';
 import {
+  Platform,
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
@@ -24,7 +25,7 @@ const GameMain:React.FC = ({}) => {
   } = useContext(GameContext)
 
   return (
-    <VStack top={spacing.large} style={{flex: 1, backgroundColor: color.dark900}}>
+    <VStack top={spacing.large} style={[styles.mainContainer, Platform.OS === 'web' ? styles.containerWeb : null]}>
       <HStack horizontal={spacing.large} vertical={spacing.medium}>
         <TouchableOpacity onPress={shuffleCards}>
           <Text>
@@ -38,7 +39,7 @@ const GameMain:React.FC = ({}) => {
           </Text>
         </VStack>
       </HStack>
-      <VStack horizontal={spacing.small} vertical={spacing.small} style={styles.container}>
+      <VStack horizontal={spacing.small} vertical={spacing.small} style={styles.cardContainer}>
         {cards.map((card, index) => {
           return (
             <CardItem
@@ -56,12 +57,21 @@ const GameMain:React.FC = ({}) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  cardContainer: {
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start',
     height: '100%',
+    justifyContent: 'center'
   },
+  mainContainer: {
+    flex: 1,
+    backgroundColor: color.dark900
+  },
+  containerWeb: {
+    maxWidth: 480,
+    alignSelf: 'center'
+  }
 });
 export default GameMain;

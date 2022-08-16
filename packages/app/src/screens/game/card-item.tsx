@@ -3,8 +3,7 @@ import {Animated, StyleSheet, TouchableOpacity} from "react-native";
 import {color, layout, roundness, spacing} from "../../styles";
 import {Text} from "../../components/text/text";
 import {CardItemType} from "../../type";
-
-export const ANIMATION_DURATION = 500
+import {ANIMATION_DURATION} from "./consts";
 
 export type CardItemProps = {
   card: CardItemType,
@@ -82,7 +81,7 @@ export const CardItem:React.FC<CardItemProps> = ({ card, handleChoice, flipped, 
           }
         ]
       }]}>
-        <Text style={{color: color.dark900, fontSize: spacing.extraLarge}}>
+        <Text style={styles.cardNumberText}>
           {card.number}
         </Text>
       </Animated.View>
@@ -92,10 +91,11 @@ export const CardItem:React.FC<CardItemProps> = ({ card, handleChoice, flipped, 
 
 const styles = StyleSheet.create({
   container: {
-    flexBasis: '33.3%',
+    flexBasis: '30%',
     flex: 1,
-    height: '25%',
-    padding: spacing.tiny,
+    height: '23%',
+    marginHorizontal: spacing.tiny,
+    marginVertical: spacing.tiny,
   },
   card:{
     backgroundColor: color.primary900,
@@ -109,7 +109,9 @@ const styles = StyleSheet.create({
     backgroundColor: color.white,
     position: 'absolute',
     width: '100%',
-    top: spacing.tiny,
-    left: spacing.tiny
+  },
+  cardNumberText:{
+    color: color.dark900,
+    fontSize: spacing.extraLarge
   }
 });
