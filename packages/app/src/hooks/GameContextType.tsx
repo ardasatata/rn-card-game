@@ -8,4 +8,5 @@ export type GameContextType = {
   choiceOne: CardItemType | null,
   choiceTwo: CardItemType | null,
   disabled: boolean,
+  pairsCompleted: number
 }

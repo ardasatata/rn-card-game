@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {
   Platform,
   StyleSheet,
@@ -11,6 +11,7 @@ import {Text} from "../../components/text/text";
 import {Spacer} from "../../components/spacer";
 import {CardItem} from "./card-item";
 import {GameContext} from "../../hooks/GameContextProvider";
+import alert from "../../components/alert";
 
 const GameMain:React.FC = ({}) => {
 
@@ -22,25 +23,54 @@ const GameMain:React.FC = ({}) => {
     turns,
     choiceOne,
     choiceTwo,
+    pairsCompleted
   } = useContext(GameContext)
+
+  const winAlert = () =>
+    alert(
+      "Congratulations!",
+      `You win this game by ${turns} steps!`,
+      [
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        { text: "Try another round", onPress: () => {
+          shuffleCards()
+        } }
+      ]
+    );
+
+  useEffect(()=>{
+    if(pairsCompleted === cards.length / 2){
+      winAlert()
+    }
+  },[pairsCompleted])
 
   return (
     <VStack top={spacing.large} style={[styles.mainContainer, Platform.OS === 'web' ? styles.containerWeb : null]}>
-      <HStack horizontal={spacing.large} vertical={spacing.medium}>
+      <HStack horizontal={spacing.large} vertical={spacing.small}>
         <TouchableOpacity onPress={shuffleCards}>
-          <Text>
+          <Text style={styles.restartButton}>
             Restart
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={winAlert}>
+          <Text style={styles.restartButton}>
+            Win
           </Text>
         </TouchableOpacity>
         <Spacer/>
         <VStack>
-          <Text>
-            Moves: {turns}
+          <Text style={styles.textSteps}>
+            STEPS:
+            <Text style={styles.textStepsNumber}>
+              {turns}
+              {pairsCompleted}
+            </Text>
           </Text>
         </VStack>
       </HStack>
       <VStack horizontal={spacing.small} vertical={spacing.small} style={styles.cardContainer}>
-        {cards.map((card, index) => {
+        {cards.map((card) => {
           return (
             <CardItem
               key={card.key}
@@ -72,6 +102,18 @@ const styles = StyleSheet.create({
   containerWeb: {
     maxWidth: 480,
     alignSelf: 'center'
+  },
+  textSteps: {
+    color: color.white,
+    fontSize: spacing.large
+  },
+  textStepsNumber: {
+    color: color.primary900,
+    fontSize: spacing.extraLarge
+  },
+  restartButton: {
+    color: color.primary900,
+    fontSize: spacing.extraMedium
   }
 });
 export default GameMain;

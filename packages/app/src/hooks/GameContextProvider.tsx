@@ -5,8 +5,6 @@ import {logger, randomizedCards} from "../utils";
 import {ANIMATION_DURATION} from "../screens/game/consts";
 import {GameContextType} from "./GameContextType";
 
-const log = logger().child({module: "AnimeList"})
-
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 export const GameContext = createContext<GameContextType>(null);
@@ -18,6 +16,7 @@ export const GameContextProvider:React.FC = ({children}) => {
   const [choiceOne, setChoiceOne] = useState<CardItemType | null>(null)
   const [choiceTwo, setChoiceTwo] = useState<CardItemType | null>(null)
   const [disabled, setDisabled] = useState<boolean>(false)
+  const [pairsCompleted, setPairsCompleted] = useState<number>(0)
 
   // shuffle cards for new game
   const shuffleCards = () => {
@@ -28,6 +27,7 @@ export const GameContextProvider:React.FC = ({children}) => {
     setChoiceTwo(null)
     setCards(shuffledCards)
     setTurns(0)
+    setPairsCompleted(0)
   }
 
   // handle a choice
@@ -51,13 +51,14 @@ export const GameContextProvider:React.FC = ({children}) => {
             }
           })
         })
+        setPairsCompleted( prevState => prevState + 1)
         resetTurn()
       } else {
         setTimeout(() => resetTurn(), ANIMATION_DURATION)
       }
 
     }
-  }, [choiceOne, choiceTwo])
+  }, [choiceOne, choiceTwo, pairsCompleted])
 
   // reset choices & increase turn
   const resetTurn = () => {
@@ -81,6 +82,7 @@ export const GameContextProvider:React.FC = ({children}) => {
       choiceOne,
       choiceTwo,
       disabled,
+      pairsCompleted
     }),
     [
       shuffleCards,
@@ -90,6 +92,7 @@ export const GameContextProvider:React.FC = ({children}) => {
       choiceOne,
       choiceTwo,
       disabled,
+      pairsCompleted
     ]
   );
 
